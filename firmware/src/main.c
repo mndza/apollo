@@ -38,8 +38,8 @@
 #include "console.h"
 #include "debug_spi.h"
 #include "usb_switch.h"
+#include "fpga_status.h"
 //#include "selftest.h"
-
 
 
 /**
@@ -53,12 +53,20 @@ int main(void)
 	fpga_io_init();
 	led_init();
 	debug_spi_init();
-	hand_off_usb();
 
 	// Trigger an FPGA reconfiguration; so the FPGA automatically
 	// configures itself from its SPI ROM on reset. This effectively
 	// makes the RESET button reset both the uC and the FPGA.
 	trigger_fpga_reconfiguration();
+
+	// CONTROL port is handed off to the FPGA at start-up by default if
+	// no errors happened during configuration. The STATUS register is
+	// read to detect these errors or an empty configuration memory.
+	if (fpga_configured_ok()) {
+		hand_off_usb();
+	} else {
+		take_over_usb();
+	}
 
 	while (1) {
 		tud_task(); // tinyusb device task
