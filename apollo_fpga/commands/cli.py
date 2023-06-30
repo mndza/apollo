@@ -24,7 +24,6 @@ from apollo_fpga.onboard_jtag import *
 
 COMMAND_HELP_TEXT = \
 """configure  -- Uploads a bitstream to the device's FPGA over JTAG.
-program       -- Programs the target bitstream onto the attached FPGA.
 force-offline -- Forces the board's FPGA offline; useful for recovering a "bricked" JTAG connection.
 jtag-scan     -- Prints information about devices on the onboard JTAG chain.
 flash-info    -- Prints information about the FPGA's attached configuration flash.
