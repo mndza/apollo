@@ -145,6 +145,9 @@ def configure_fpga(device, args):
 
         programmer.configure(bitstream)
 
+    # Let the LUNA gateware take over in devices with shared USB port
+    device.honor_fpga_adv()
+
 
 def ensure_unconfigured(device):
     with device.jtag as jtag:
@@ -170,6 +173,9 @@ def program_flash(device, args):
         programmer.flash(bitstream)
 
     device.soft_reset()
+    
+    # Let the LUNA gateware take over in devices with shared USB port
+    device.honor_fpga_adv()
 
 def read_back_flash(device, args):
 

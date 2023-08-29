@@ -53,7 +53,7 @@ int main(void)
 	fpga_io_init();
 	led_init();
 	debug_spi_init();
-	hand_off_usb();
+	usb_switch_init();
 
 	// Trigger an FPGA reconfiguration; so the FPGA automatically
 	// configures itself from its SPI ROM on reset. This effectively
