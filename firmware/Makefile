@@ -18,6 +18,11 @@ ifeq ($(APOLLO_BOARD), luna)
 	BOARD := cynthion_d11
 endif
 
+ifeq ($(APOLLO_BOARD), urti)
+	BOARD := urti
+endif
+
+
 ifeq ($(BOARD), cynthion_d11)
 	# These should default to the latest revision but can be set on the command line.
 	BOARD_REVISION_MAJOR ?= 1
