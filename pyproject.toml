@@ -34,8 +34,8 @@ dependencies = [
 [project.urls]
 repository = "https://github.com/greatscottgadgets/apollo"
 
-[tool.setuptools]
-packages = ["apollo_fpga"]
+[tool.setuptools.package-dir]
+apollo_fpga = "apollo_fpga"
 
 [project.scripts]
 apollo = "apollo_fpga.commands.cli:main"
